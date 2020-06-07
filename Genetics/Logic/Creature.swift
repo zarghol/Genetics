@@ -15,30 +15,42 @@ class Creature {
     var attraction: Int = 0 // attraction of the creature
     var isAlive: Bool = true
     var perception: Perception? = nil
+    var canMakeBabies: Bool = false
+    var lastReproducing: AppDate
 
     let name: String
+
+    let birthDate: AppDate
 
     static let puberty = 15 // number of iteration without reproduction enabled
     static let baseLifeTime = 80 // base number of iteration before dying
 
-    init(dna: DNA, name: String) {
+    init(dna: DNA, name: String, birthDate: AppDate) {
         self.dna = dna
         self.name = name
+        self.birthDate = birthDate
+        lastReproducing = birthDate
     }
 
     func live(in environment: Environment) {
         print("live of \(name)")
         guard isAlive else { return }
 
-        guard let characteristics = try? Characteristics(dna: self.dna) else { isAlive = false; return }
-
-        let ageThreshold = Self.baseLifeTime + characteristics.lifeDuration
-        if age > ageThreshold {
-             print("die of age (\(age)) (with DNA : \(dna.debugDescription))")
+        guard let characteristics = try? Characteristics(dna: self.dna) else {
+            print("die of mutation 🦠 with DNA : \(dna.debugDescription)")
             isAlive = false
             return
         }
 
+        let ageThreshold = Self.baseLifeTime + characteristics.lifeDuration
+        if age > ageThreshold {
+            print("die of age 👴 (\(age)) (with DNA : \(dna.debugDescription))")
+            isAlive = false
+            return
+        }
+
+        self.age = environment.now.monthsInterval(with: birthDate) / 12
+        self.canMakeBabies = age >= Self.puberty && lastReproducing.monthsInterval(with: environment.now) > 9
         self.attraction = characteristics.attraction
         self.updatePerception(of: environment)
 
@@ -51,7 +63,7 @@ class Creature {
     }
 
     static func willMutate(basedOnAge age: Int, andCharacteristics characteristics: Characteristics) -> Bool {
-        let basePercentage = Int(Double(age) * 0.875 + 5).toPercentage()
+        let basePercentage = Int(Double(age) * 0.875 + 15).toPercentage()
         let firstChance = basePercentage + characteristics.dnaStability
 
         let rand = Double.random(in: 0 ... 1)
@@ -78,14 +90,13 @@ class Creature {
     }
 
     static func willTryReproduce(basedOnAge age: Int) -> Bool {
-        guard age >= Self.puberty else { return false }
-
         let age = Double(age)
         let chance = Int(0.9 * age * cos(age/10) - age + 80).toPercentage()
         return Double.random(in: 0 ... 1) <= chance
     }
 
     func tryReproduce(in environment: Environment) {
+        guard self.canMakeBabies else { return }
         guard Self.willTryReproduce(basedOnAge: self.age) else { return }
         guard let perception = self.perception else { return }
 
@@ -99,7 +110,9 @@ class Creature {
         return Int.random(in: 0...255) < attractionScore
     }
 
-    var cuttedDNA: [DNA] {
+    func reproduce(at time: AppDate) -> [DNA] {
+        lastReproducing = time
+
         let cutIndex = dna.count / 2
         return [DNA(dna[0..<cutIndex]), DNA(dna[cutIndex..<dna.count])]
     }

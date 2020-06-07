@@ -23,14 +23,14 @@ extension Characteristics {
     }
 
     init(dna: DNA) throws {
-        guard dna.count >= 19 else { throw Error.truncatedDNA(dna.count) }
+        guard dna.count >= 20 else { throw Error.truncatedDNA(dna.count) }
 
-        self.attraction = dna[0...3].convertToInt()
-        self.lifeDuration = dna[4...6].convertToInt() - 20
-        self.dnaStability = (dna[7...9].convertToInt() - 30).toPercentage()
-        self.detection = dna[10...13].convertToInt().toPercentage()
-        self.fecondation = dna[14...15].convertToInt().toPercentage()
-        self.resilience = dna[16...20].convertToInt().toPercentage()
+        self.attraction = dna[0...3].convertToInt() // 4
+        self.lifeDuration = dna[4...6].convertToInt() - 20 // 3
+        self.dnaStability = (dna[7...9].convertToInt() - 30).toPercentage() // 3
+        self.detection = dna[10...13].convertToInt().toPercentage() // 4
+        self.fecondation = dna[14...15].convertToInt().toPercentage() // 2
+        self.resilience = (dna[16...19].convertToInt() / 511).toPercentage() // 4
     }
 
     func encode() -> DNA {

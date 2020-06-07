@@ -11,13 +11,15 @@ import SwiftUI
 struct ContentView: View {
 
     func live() {
-        let aliceChar = Characteristics(attraction: 200, lifeDuration: 10, dnaStability: 0.7, detection: 0.3, fecondation: 0.9, resilience: 0.5)
-        let bobChar = Characteristics(attraction: 200, lifeDuration: 15, dnaStability: 0.6, detection: 0.6, fecondation: 0.5, resilience: 0.7)
+        let firstChar = Characteristics(attraction: 200, lifeDuration: 10, dnaStability: 0.3, detection: 0.3, fecondation: 0.9, resilience: 0.5)
+        let secondChar = Characteristics(attraction: 200, lifeDuration: 15, dnaStability: 0.3, detection: 0.6, fecondation: 0.5, resilience: 0.5)
 
-        let env = Environment(creatures: [
-            Creature(dna: aliceChar.encode(), name: "Alice"),
-            Creature(dna: bobChar.encode(), name: "Bob")
-        ])
+        let nameGen = try! LocalJsonNameGenerator(fileName: "Names")
+
+        let env = Environment(initialCreatures: [
+            Creature(dna: firstChar.encode(), name: nameGen.newName(), birthDate: .init(months: 0, years: 0)),
+            Creature(dna: secondChar.encode(), name: nameGen.newName(), birthDate: .init(months: 0, years: 0))
+        ], nameGenerator: nameGen)
 
         while true {
             env.live()

@@ -12,6 +12,6 @@ typealias DNA = Array<Nucleotid>
 
 extension DNA {
     var debugDescription: String {
-        return self.map { $0.rawValue }.joined()
+        return "🧬 " + self.map { $0.rawValue }.joined()
     }
 }

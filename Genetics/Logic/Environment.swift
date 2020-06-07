@@ -9,12 +9,14 @@
 import Foundation
 
 class Environment {
+    let nameGenerator: NameGenerator
     var creatures: [Creature]
     private var reproductionAttempts: [(Creature, Creature)] = []
-    var year: Int = 0
+    private(set) var now: AppDate = .init(months: 0, years: 0)
 
-    init(creatures: [Creature]) {
-        self.creatures = creatures
+    init(initialCreatures: [Creature], nameGenerator: NameGenerator) {
+        self.creatures = initialCreatures
+        self.nameGenerator = nameGenerator
     }
 
     // perceive not all the environment but only a slice of it... but interact with the real environment based on the slice
@@ -32,13 +34,28 @@ class Environment {
     }
 
     func live() {
-        year += 1
-        print("new year : \(year)")
+        now.addMonths(1)
+        if now.months == 0 {
+            print("happy new year !! \(now.years) 🎉")
+        } else {
+            print("a new month come (\(now.months))")
+        }
+
         creatures.shuffle()
         print("population (\(creatures.count)): \(creatures.map { $0.name })")
         creatures.forEach { $0.live(in: self) }
         creatures = creatures.filter { $0.isAlive }
         resolveReproduction()
+    }
+
+    func newName() -> String {
+        let existingNames = creatures.map { $0.name}
+        var name = ""
+        repeat {
+            name = nameGenerator.newName()
+        } while existingNames.contains(name)
+
+        return name
     }
 
     func resolveReproduction() {
@@ -54,8 +71,9 @@ class Environment {
                 reproducing.append(wanting)
                 reproducing.append(wanted)
                 // do stuff with dna and create new in population
-                let newDNA = wanting.cuttedDNA[0] + wanted.cuttedDNA[1]
-                let baby = Creature(dna: newDNA, name: UUID().uuidString)
+
+                let newDNA = wanting.reproduce(at: now)[0] + wanted.reproduce(at: now)[1]
+                let baby = Creature(dna: newDNA, name: newName(), birthDate: now)
                 print("a baby !!! hello \(baby.name) (with DNA : \(baby.dna.debugDescription))")
                 self.creatures.append(baby)
             }

@@ -22,7 +22,21 @@
 		18094C67248D266500CE298C /* Perception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C66248D266500CE298C /* Perception.swift */; };
 		18094C69248D267900CE298C /* PerceivedCreature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C68248D267900CE298C /* PerceivedCreature.swift */; };
 		18094C6B248D268E00CE298C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C6A248D268E00CE298C /* Environment.swift */; };
+		18094C6D248D5D6D00CE298C /* Names.json in Resources */ = {isa = PBXBuildFile; fileRef = 18094C6C248D5D6D00CE298C /* Names.json */; };
+		18094C6F248D5E2600CE298C /* Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C6E248D5E2600CE298C /* Names.swift */; };
+		18094C77248D64A300CE298C /* GeneticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C76248D64A300CE298C /* GeneticsTests.swift */; };
+		18094C7F248D78D500CE298C /* AppDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C7E248D78D500CE298C /* AppDate.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		18094C79248D64A300CE298C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 18094C3A248D254200CE298C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18094C41248D254200CE298C;
+			remoteInfo = Genetics;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		18094C42248D254200CE298C /* Genetics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Genetics.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,10 +56,23 @@
 		18094C66248D266500CE298C /* Perception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perception.swift; sourceTree = "<group>"; };
 		18094C68248D267900CE298C /* PerceivedCreature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerceivedCreature.swift; sourceTree = "<group>"; };
 		18094C6A248D268E00CE298C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		18094C6C248D5D6D00CE298C /* Names.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Names.json; sourceTree = "<group>"; };
+		18094C6E248D5E2600CE298C /* Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Names.swift; sourceTree = "<group>"; };
+		18094C74248D64A300CE298C /* GeneticsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeneticsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		18094C76248D64A300CE298C /* GeneticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticsTests.swift; sourceTree = "<group>"; };
+		18094C78248D64A300CE298C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18094C7E248D78D500CE298C /* AppDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		18094C3F248D254200CE298C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18094C71248D64A300CE298C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -59,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				18094C44248D254200CE298C /* Genetics */,
+				18094C75248D64A300CE298C /* GeneticsTests */,
 				18094C43248D254200CE298C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				18094C42248D254200CE298C /* Genetics.app */,
+				18094C74248D64A300CE298C /* GeneticsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				18094C45248D254200CE298C /* AppDelegate.swift */,
+				18094C6C248D5D6D00CE298C /* Names.json */,
+				18094C6E248D5E2600CE298C /* Names.swift */,
 				18094C59248D256900CE298C /* Logic */,
 				18094C47248D254200CE298C /* SceneDelegate.swift */,
 				18094C49248D254200CE298C /* ContentView.swift */,
@@ -106,8 +137,18 @@
 				18094C66248D266500CE298C /* Perception.swift */,
 				18094C68248D267900CE298C /* PerceivedCreature.swift */,
 				18094C6A248D268E00CE298C /* Environment.swift */,
+				18094C7E248D78D500CE298C /* AppDate.swift */,
 			);
 			path = Logic;
+			sourceTree = "<group>";
+		};
+		18094C75248D64A300CE298C /* GeneticsTests */ = {
+			isa = PBXGroup;
+			children = (
+				18094C76248D64A300CE298C /* GeneticsTests.swift */,
+				18094C78248D64A300CE298C /* Info.plist */,
+			);
+			path = GeneticsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +171,24 @@
 			productReference = 18094C42248D254200CE298C /* Genetics.app */;
 			productType = "com.apple.product-type.application";
 		};
+		18094C73248D64A300CE298C /* GeneticsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18094C7B248D64A300CE298C /* Build configuration list for PBXNativeTarget "GeneticsTests" */;
+			buildPhases = (
+				18094C70248D64A300CE298C /* Sources */,
+				18094C71248D64A300CE298C /* Frameworks */,
+				18094C72248D64A300CE298C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18094C7A248D64A300CE298C /* PBXTargetDependency */,
+			);
+			name = GeneticsTests;
+			productName = GeneticsTests;
+			productReference = 18094C74248D64A300CE298C /* GeneticsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -142,6 +201,10 @@
 				TargetAttributes = {
 					18094C41248D254200CE298C = {
 						CreatedOnToolsVersion = 11.4.1;
+					};
+					18094C73248D64A300CE298C = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 18094C41248D254200CE298C;
 					};
 				};
 			};
@@ -159,6 +222,7 @@
 			projectRoot = "";
 			targets = (
 				18094C41248D254200CE298C /* Genetics */,
+				18094C73248D64A300CE298C /* GeneticsTests */,
 			);
 		};
 /* End PBXProject section */
@@ -170,7 +234,15 @@
 			files = (
 				18094C52248D254400CE298C /* LaunchScreen.storyboard in Resources */,
 				18094C4F248D254400CE298C /* Preview Assets.xcassets in Resources */,
+				18094C6D248D5D6D00CE298C /* Names.json in Resources */,
 				18094C4C248D254400CE298C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		18094C72248D64A300CE298C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,11 +254,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				18094C67248D266500CE298C /* Perception.swift in Sources */,
+				18094C7F248D78D500CE298C /* AppDate.swift in Sources */,
 				18094C6B248D268E00CE298C /* Environment.swift in Sources */,
 				18094C63248D263500CE298C /* MutationType.swift in Sources */,
 				18094C46248D254200CE298C /* AppDelegate.swift in Sources */,
 				18094C65248D264900CE298C /* Creature.swift in Sources */,
 				18094C69248D267900CE298C /* PerceivedCreature.swift in Sources */,
+				18094C6F248D5E2600CE298C /* Names.swift in Sources */,
 				18094C61248D261A00CE298C /* Characteristics.swift in Sources */,
 				18094C5B248D257E00CE298C /* Nucleotid.swift in Sources */,
 				18094C48248D254200CE298C /* SceneDelegate.swift in Sources */,
@@ -196,7 +270,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18094C70248D64A300CE298C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18094C77248D64A300CE298C /* GeneticsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		18094C7A248D64A300CE298C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 18094C41248D254200CE298C /* Genetics */;
+			targetProxy = 18094C79248D64A300CE298C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		18094C50248D254400CE298C /* LaunchScreen.storyboard */ = {
@@ -364,6 +454,46 @@
 			};
 			name = Release;
 		};
+		18094C7C248D64A300CE298C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9S22HJC2PB;
+				INFOPLIST_FILE = GeneticsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nonn.clement.GeneticsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Genetics.app/Genetics";
+			};
+			name = Debug;
+		};
+		18094C7D248D64A300CE298C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9S22HJC2PB;
+				INFOPLIST_FILE = GeneticsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = nonn.clement.GeneticsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Genetics.app/Genetics";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -381,6 +511,15 @@
 			buildConfigurations = (
 				18094C57248D254400CE298C /* Debug */,
 				18094C58248D254400CE298C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18094C7B248D64A300CE298C /* Build configuration list for PBXNativeTarget "GeneticsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18094C7C248D64A300CE298C /* Debug */,
+				18094C7D248D64A300CE298C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
