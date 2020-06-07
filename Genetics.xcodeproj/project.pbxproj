@@ -13,6 +13,15 @@
 		18094C4C248D254400CE298C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18094C4B248D254400CE298C /* Assets.xcassets */; };
 		18094C4F248D254400CE298C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18094C4E248D254400CE298C /* Preview Assets.xcassets */; };
 		18094C52248D254400CE298C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18094C50248D254400CE298C /* LaunchScreen.storyboard */; };
+		18094C5B248D257E00CE298C /* Nucleotid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C5A248D257E00CE298C /* Nucleotid.swift */; };
+		18094C5D248D25C600CE298C /* DNA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C5C248D25C600CE298C /* DNA.swift */; };
+		18094C5F248D25E100CE298C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C5E248D25E100CE298C /* Extensions.swift */; };
+		18094C61248D261A00CE298C /* Characteristics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C60248D261A00CE298C /* Characteristics.swift */; };
+		18094C63248D263500CE298C /* MutationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C62248D263500CE298C /* MutationType.swift */; };
+		18094C65248D264900CE298C /* Creature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C64248D264900CE298C /* Creature.swift */; };
+		18094C67248D266500CE298C /* Perception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C66248D266500CE298C /* Perception.swift */; };
+		18094C69248D267900CE298C /* PerceivedCreature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C68248D267900CE298C /* PerceivedCreature.swift */; };
+		18094C6B248D268E00CE298C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C6A248D268E00CE298C /* Environment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +33,15 @@
 		18094C4E248D254400CE298C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18094C51248D254400CE298C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18094C53248D254400CE298C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18094C5A248D257E00CE298C /* Nucleotid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nucleotid.swift; sourceTree = "<group>"; };
+		18094C5C248D25C600CE298C /* DNA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNA.swift; sourceTree = "<group>"; };
+		18094C5E248D25E100CE298C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		18094C60248D261A00CE298C /* Characteristics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characteristics.swift; sourceTree = "<group>"; };
+		18094C62248D263500CE298C /* MutationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutationType.swift; sourceTree = "<group>"; };
+		18094C64248D264900CE298C /* Creature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creature.swift; sourceTree = "<group>"; };
+		18094C66248D266500CE298C /* Perception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perception.swift; sourceTree = "<group>"; };
+		18094C68248D267900CE298C /* PerceivedCreature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerceivedCreature.swift; sourceTree = "<group>"; };
+		18094C6A248D268E00CE298C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				18094C45248D254200CE298C /* AppDelegate.swift */,
+				18094C59248D256900CE298C /* Logic */,
 				18094C47248D254200CE298C /* SceneDelegate.swift */,
 				18094C49248D254200CE298C /* ContentView.swift */,
 				18094C4B248D254400CE298C /* Assets.xcassets */,
@@ -73,6 +92,22 @@
 				18094C4E248D254400CE298C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		18094C59248D256900CE298C /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				18094C5A248D257E00CE298C /* Nucleotid.swift */,
+				18094C5C248D25C600CE298C /* DNA.swift */,
+				18094C5E248D25E100CE298C /* Extensions.swift */,
+				18094C60248D261A00CE298C /* Characteristics.swift */,
+				18094C62248D263500CE298C /* MutationType.swift */,
+				18094C64248D264900CE298C /* Creature.swift */,
+				18094C66248D266500CE298C /* Perception.swift */,
+				18094C68248D267900CE298C /* PerceivedCreature.swift */,
+				18094C6A248D268E00CE298C /* Environment.swift */,
+			);
+			path = Logic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +181,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18094C67248D266500CE298C /* Perception.swift in Sources */,
+				18094C6B248D268E00CE298C /* Environment.swift in Sources */,
+				18094C63248D263500CE298C /* MutationType.swift in Sources */,
 				18094C46248D254200CE298C /* AppDelegate.swift in Sources */,
+				18094C65248D264900CE298C /* Creature.swift in Sources */,
+				18094C69248D267900CE298C /* PerceivedCreature.swift in Sources */,
+				18094C61248D261A00CE298C /* Characteristics.swift in Sources */,
+				18094C5B248D257E00CE298C /* Nucleotid.swift in Sources */,
 				18094C48248D254200CE298C /* SceneDelegate.swift in Sources */,
+				18094C5F248D25E100CE298C /* Extensions.swift in Sources */,
 				18094C4A248D254200CE298C /* ContentView.swift in Sources */,
+				18094C5D248D25C600CE298C /* DNA.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

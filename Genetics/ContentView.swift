@@ -9,8 +9,23 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    func live() {
+        let aliceChar = Characteristics(attraction: 200, lifeDuration: 10, dnaStability: 0.7, detection: 0.3, fecondation: 0.9, resilience: 0.5)
+        let bobChar = Characteristics(attraction: 200, lifeDuration: 15, dnaStability: 0.6, detection: 0.6, fecondation: 0.5, resilience: 0.7)
+
+        let env = Environment(creatures: [
+            Creature(dna: aliceChar.encode(), name: "Alice"),
+            Creature(dna: bobChar.encode(), name: "Bob")
+        ])
+
+        while true {
+            env.live()
+        }
+    }
     var body: some View {
         Text("Hello, World!")
+            .onAppear(perform: live)
     }
 }
 
