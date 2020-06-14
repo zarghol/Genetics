@@ -9,7 +9,7 @@
 import Foundation
 
 protocol NameGenerator {
-    func newName() -> String
+    func newName(avoidingNames toAvoid: [String]) -> String
 }
 
 fileprivate struct Names: Decodable {
@@ -31,8 +31,15 @@ final class LocalJsonNameGenerator: NameGenerator {
         self.names = names
     }
 
-    func newName() -> String {
-        names.randomElement()!
+    func newName(avoidingNames toAvoid: [String] = []) -> String {
+        let names: [String]
+        if toAvoid.isEmpty {
+            names = self.names
+        } else {
+            names = self.names.filter { !toAvoid.contains($0) }
+        }
+
+        return names.randomElement() ?? UUID().uuidString
     }
 }
 
@@ -40,5 +47,11 @@ extension LocalJsonNameGenerator {
     enum Error: Swift.Error {
         case badFileName(String)
         case fileListEmpty
+    }
+}
+
+final class NumerotedNameGenerator: NameGenerator {
+    func newName(avoidingNames toAvoid: [String]) -> String {
+        return "Test\(toAvoid.count)"
     }
 }

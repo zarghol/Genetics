@@ -32,7 +32,7 @@ class Creature {
         lastReproducing = birthDate
     }
 
-    func live(in environment: Environment) {
+    func live(in environment: SimulationEnvironment) {
         print("live of \(name)")
         guard isAlive else { return }
 
@@ -74,7 +74,7 @@ class Creature {
         } else { return false }
     }
 
-    func updatePerception(of environment: Environment) {
+    func updatePerception(of environment: SimulationEnvironment) {
         self.perception = environment.perception(by: self)
     }
 
@@ -95,7 +95,7 @@ class Creature {
         return Double.random(in: 0 ... 1) <= chance
     }
 
-    func tryReproduce(in environment: Environment) {
+    func tryReproduce(in environment: SimulationEnvironment) {
         guard self.canMakeBabies else { return }
         guard Self.willTryReproduce(basedOnAge: self.age) else { return }
         guard let perception = self.perception else { return }

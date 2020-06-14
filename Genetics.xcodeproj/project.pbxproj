@@ -21,11 +21,14 @@
 		18094C65248D264900CE298C /* Creature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C64248D264900CE298C /* Creature.swift */; };
 		18094C67248D266500CE298C /* Perception.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C66248D266500CE298C /* Perception.swift */; };
 		18094C69248D267900CE298C /* PerceivedCreature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C68248D267900CE298C /* PerceivedCreature.swift */; };
-		18094C6B248D268E00CE298C /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C6A248D268E00CE298C /* Environment.swift */; };
+		18094C6B248D268E00CE298C /* SimulationEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C6A248D268E00CE298C /* SimulationEnvironment.swift */; };
 		18094C6D248D5D6D00CE298C /* Names.json in Resources */ = {isa = PBXBuildFile; fileRef = 18094C6C248D5D6D00CE298C /* Names.json */; };
 		18094C6F248D5E2600CE298C /* Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C6E248D5E2600CE298C /* Names.swift */; };
 		18094C77248D64A300CE298C /* GeneticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C76248D64A300CE298C /* GeneticsTests.swift */; };
 		18094C7F248D78D500CE298C /* AppDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C7E248D78D500CE298C /* AppDate.swift */; };
+		18094C81248E2A0000CE298C /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C80248E2A0000CE298C /* StartView.swift */; };
+		18094C83248E385100CE298C /* PopulationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C82248E385100CE298C /* PopulationView.swift */; };
+		18B8398A2496BAE700797BC2 /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B839892496BAE700797BC2 /* EnvironmentManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,13 +58,16 @@
 		18094C64248D264900CE298C /* Creature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creature.swift; sourceTree = "<group>"; };
 		18094C66248D266500CE298C /* Perception.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Perception.swift; sourceTree = "<group>"; };
 		18094C68248D267900CE298C /* PerceivedCreature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerceivedCreature.swift; sourceTree = "<group>"; };
-		18094C6A248D268E00CE298C /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		18094C6A248D268E00CE298C /* SimulationEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationEnvironment.swift; sourceTree = "<group>"; };
 		18094C6C248D5D6D00CE298C /* Names.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Names.json; sourceTree = "<group>"; };
 		18094C6E248D5E2600CE298C /* Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Names.swift; sourceTree = "<group>"; };
 		18094C74248D64A300CE298C /* GeneticsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeneticsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18094C76248D64A300CE298C /* GeneticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneticsTests.swift; sourceTree = "<group>"; };
 		18094C78248D64A300CE298C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18094C7E248D78D500CE298C /* AppDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDate.swift; sourceTree = "<group>"; };
+		18094C80248E2A0000CE298C /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		18094C82248E385100CE298C /* PopulationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopulationView.swift; sourceTree = "<group>"; };
+		18B839892496BAE700797BC2 /* EnvironmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,9 @@
 				18094C59248D256900CE298C /* Logic */,
 				18094C47248D254200CE298C /* SceneDelegate.swift */,
 				18094C49248D254200CE298C /* ContentView.swift */,
+				18B839892496BAE700797BC2 /* EnvironmentManager.swift */,
+				18094C82248E385100CE298C /* PopulationView.swift */,
+				18094C80248E2A0000CE298C /* StartView.swift */,
 				18094C4B248D254400CE298C /* Assets.xcassets */,
 				18094C50248D254400CE298C /* LaunchScreen.storyboard */,
 				18094C53248D254400CE298C /* Info.plist */,
@@ -136,7 +145,7 @@
 				18094C64248D264900CE298C /* Creature.swift */,
 				18094C66248D266500CE298C /* Perception.swift */,
 				18094C68248D267900CE298C /* PerceivedCreature.swift */,
-				18094C6A248D268E00CE298C /* Environment.swift */,
+				18094C6A248D268E00CE298C /* SimulationEnvironment.swift */,
 				18094C7E248D78D500CE298C /* AppDate.swift */,
 			);
 			path = Logic;
@@ -255,10 +264,12 @@
 			files = (
 				18094C67248D266500CE298C /* Perception.swift in Sources */,
 				18094C7F248D78D500CE298C /* AppDate.swift in Sources */,
-				18094C6B248D268E00CE298C /* Environment.swift in Sources */,
+				18094C6B248D268E00CE298C /* SimulationEnvironment.swift in Sources */,
 				18094C63248D263500CE298C /* MutationType.swift in Sources */,
 				18094C46248D254200CE298C /* AppDelegate.swift in Sources */,
+				18094C83248E385100CE298C /* PopulationView.swift in Sources */,
 				18094C65248D264900CE298C /* Creature.swift in Sources */,
+				18094C81248E2A0000CE298C /* StartView.swift in Sources */,
 				18094C69248D267900CE298C /* PerceivedCreature.swift in Sources */,
 				18094C6F248D5E2600CE298C /* Names.swift in Sources */,
 				18094C61248D261A00CE298C /* Characteristics.swift in Sources */,
@@ -267,6 +278,7 @@
 				18094C5F248D25E100CE298C /* Extensions.swift in Sources */,
 				18094C4A248D254200CE298C /* ContentView.swift in Sources */,
 				18094C5D248D25C600CE298C /* DNA.swift in Sources */,
+				18B8398A2496BAE700797BC2 /* EnvironmentManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

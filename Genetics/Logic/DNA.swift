@@ -15,3 +15,9 @@ extension DNA {
         return "🧬 " + self.map { $0.rawValue }.joined()
     }
 }
+
+extension DNA {
+    static func random(length: Int) -> DNA {
+        return (0..<length).map { _ in Nucleotid.randomCase() }
+    }
+}

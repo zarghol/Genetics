@@ -19,6 +19,12 @@ struct AppDate {
     }
 }
 
+extension AppDate: CustomStringConvertible {
+    var description: String {
+        "\(months)/\(years)"
+    }
+}
+
 extension AppDate: Equatable { }
 
 extension AppDate: Comparable {

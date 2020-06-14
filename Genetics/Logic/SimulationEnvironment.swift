@@ -8,9 +8,9 @@
 
 import Foundation
 
-class Environment {
+class SimulationEnvironment {
     let nameGenerator: NameGenerator
-    var creatures: [Creature]
+    private(set) var creatures: [Creature]
     private var reproductionAttempts: [(Creature, Creature)] = []
     private(set) var now: AppDate = .init(months: 0, years: 0)
 
@@ -48,17 +48,12 @@ class Environment {
         resolveReproduction()
     }
 
-    func newName() -> String {
-        let existingNames = creatures.map { $0.name}
-        var name = ""
-        repeat {
-            name = nameGenerator.newName()
-        } while existingNames.contains(name)
-
-        return name
+    private func newName() -> String {
+        let existingNames = creatures.map { $0.name }
+        return nameGenerator.newName(avoidingNames: existingNames)
     }
 
-    func resolveReproduction() {
+    private func resolveReproduction() {
         let attempts = reproductionAttempts
             .filter { $0.isAlive && $1.isAlive }
 
@@ -84,4 +79,12 @@ class Environment {
 
     // potential danger
     // food
+}
+
+
+extension SimulationEnvironment {
+    static let mocked: SimulationEnvironment = .init(
+        initialCreatures: [.init(dna: DNA.random(length: 20), name: "Test0", birthDate: .init(months: 0, years: 0))],
+        nameGenerator: NumerotedNameGenerator()
+    )
 }

@@ -16,14 +16,14 @@ struct ContentView: View {
 
         let nameGen = try! LocalJsonNameGenerator(fileName: "Names")
 
-        let env = Environment(initialCreatures: [
+        let env = SimulationEnvironment(initialCreatures: [
             Creature(dna: firstChar.encode(), name: nameGen.newName(), birthDate: .init(months: 0, years: 0)),
             Creature(dna: secondChar.encode(), name: nameGen.newName(), birthDate: .init(months: 0, years: 0))
         ], nameGenerator: nameGen)
 
-        while true {
-            env.live()
-        }
+//        while true {
+//            env.live()
+//        }
     }
     var body: some View {
         Text("Hello, World!")
