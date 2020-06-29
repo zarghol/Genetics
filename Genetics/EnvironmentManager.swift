@@ -50,13 +50,12 @@ final class EnvironmentManager: ObservableObject {
 
     func loop() {
         environment.live()
+        if self.checkNeedsToEnd() {
+            self.launched = false
+        }
         DispatchQueue.main.async {
             self.currentDate = self.environment.now
             self.creatures = self.environment.creatures
-
-            if self.checkNeedsToEnd() {
-                self.launched = false
-            }
         }
     }
 

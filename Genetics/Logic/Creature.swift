@@ -58,7 +58,6 @@ class Creature {
         self.tryReproduce(in: environment)
         // danger ?
 
-        age += 1
         print("see ya")
     }
 

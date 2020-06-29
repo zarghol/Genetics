@@ -14,7 +14,7 @@ struct PopulationView: View {
     
     var body: some View {
         List(self.environmentManager.creatures, id: \Creature.name) { creature in
-            Text(creature.name)
+            CreatureRow(creature: creature)
         }
         .navigationBarItems(
             trailing: Button(
