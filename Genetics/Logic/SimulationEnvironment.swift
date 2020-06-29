@@ -67,7 +67,7 @@ class SimulationEnvironment {
                 reproducing.append(wanted)
                 // do stuff with dna and create new in population
 
-                let newDNA = wanting.reproduce(at: now)[0] + wanted.reproduce(at: now)[1]
+                let newDNA = DNA(parent1: wanting.reproduce(at: now), parent2: wanted.reproduce(at: now))
                 let baby = Creature(dna: newDNA, name: newName(), birthDate: now)
                 print("a baby !!! hello \(baby.name) (with DNA : \(baby.dna.debugDescription))")
                 self.creatures.append(baby)

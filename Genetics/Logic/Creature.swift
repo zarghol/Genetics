@@ -110,11 +110,9 @@ class Creature {
         return Int.random(in: 0...255) < attractionScore
     }
 
-    func reproduce(at time: AppDate) -> [DNA] {
+    func reproduce(at time: AppDate) -> DNA {
         lastReproducing = time
-
-        let cutIndex = dna.count / 2
-        return [DNA(dna[0..<cutIndex]), DNA(dna[cutIndex..<dna.count])]
+        return dna
     }
 }
 

@@ -23,24 +23,38 @@ extension Characteristics {
     }
 
     init(dna: DNA) throws {
-        guard dna.count >= 20 else { throw Error.truncatedDNA(dna.count) }
+        guard dna.minimalLength >= 26 else { throw Error.truncatedDNA(dna.minimalLength) }
 
-        self.attraction = dna[0...3].convertToInt() // 4
-        self.lifeDuration = dna[4...6].convertToInt() - 20 // 3
-        self.dnaStability = (dna[7...9].convertToInt() - 30).toPercentage() // 3
-        self.detection = dna[10...13].convertToInt().toPercentage() // 4
-        self.fecondation = dna[14...15].convertToInt().toPercentage() // 2
-        self.resilience = (dna[16...19].convertToInt() / 511).toPercentage() // 4
+        // Dominance is on 1 nucleotid for now
+//        0 | 1 2 3 4 ] 5 | 6 7 8 ] 9 | 10 11 12 ] 13 | 14 15 16 17 ] 18 | 19 20 ] 21 | 22 23 24 25 ]
+        self.attraction = dna[0..<5].convertToInt() // 4
+        self.lifeDuration = dna[5..<9].convertToInt() - 20 // 3
+        self.dnaStability = (dna[9..<13].convertToInt() - 30).toPercentage() // 3
+        self.detection = dna[13..<18].convertToInt().toPercentage() // 4
+        self.fecondation = dna[18..<21].convertToInt().toPercentage() // 2
+        self.resilience = (dna[21..<26].convertToInt() / 511).toPercentage() // 4
     }
 
-    func encode() -> DNA {
-        let att = self.attraction.convertToNucleotids(minimumDigits: 3)
+    func encode() -> [Nucleotid] {
+        let dominance = [Nucleotid.c]
+        let att = self.attraction.convertToNucleotids(minimumDigits: 4)
         let lif = (self.lifeDuration + 20).convertToNucleotids(minimumDigits: 3)
         let sta = Int(self.dnaStability * 100 + 30).convertToNucleotids(minimumDigits: 3)
         let det = Int(self.detection * 100).convertToNucleotids(minimumDigits: 4)
         let fec = Int(self.fecondation * 100).convertToNucleotids(minimumDigits: 2)
         let res = Int(self.resilience * 100).convertToNucleotids(minimumDigits: 4)
-        return att + lif + sta + det + fec + res
+        return dominance + att
+            + dominance + lif
+            + dominance + sta
+            + dominance + det
+            + dominance + fec
+            + dominance + res
+    }
+
+    func encode() -> DNA {
+        let encoded: [Nucleotid] = self.encode()
+
+        return DNA(firstStrand: encoded, secondStrand: encoded)
     }
 }
 

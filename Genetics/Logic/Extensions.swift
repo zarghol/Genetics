@@ -37,8 +37,8 @@ extension Int {
         return Double(self) / 100
     }
 
-    func convertToNucleotids(minimumDigits: Int = 0) -> DNA {
-        var arr = DNA()
+    func convertToNucleotids(minimumDigits: Int = 0) -> [Nucleotid] {
+        var arr = [Nucleotid]()
         var toDivise = self
         while toDivise >= Nucleotid.base {
             let remainder = toDivise % Nucleotid.base

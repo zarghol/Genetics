@@ -32,17 +32,21 @@ extension MutationType {
 
     func apply(on dna: DNA) -> DNA {
         print("\(self)")
-        let index = dna.index(dna.startIndex, offsetBy: Int.random(in: 0..<dna.count))
+
         var newDNA = dna
-        switch self {
-        case .replacement:
-            let newNucleotid = Nucleotid.randomCase()
-            newDNA[index] = newNucleotid
-        case .adding:
-            let newNucleotid = Nucleotid.randomCase()
-            newDNA.insert(newNucleotid, at: index)
-        case .removing:
-            newDNA.remove(at: index)
+
+        newDNA.applyMutation { strand in
+            let index = Int.random(in: 0..<strand.count)
+            switch self {
+            case .replacement:
+                let newNucleotid = Nucleotid.randomCase()
+                strand[index] = newNucleotid
+            case .adding:
+                let newNucleotid = Nucleotid.randomCase()
+                strand.insert(newNucleotid, at: index)
+            case .removing:
+                strand.remove(at: index)
+            }
         }
         print("old DNA : \(dna.debugDescription) | new : \(newDNA.debugDescription)")
         return newDNA

@@ -38,3 +38,9 @@ extension Nucleotid {
         self = val
     }
 }
+
+extension Nucleotid: Comparable {
+    static func < (lhs: Nucleotid, rhs: Nucleotid) -> Bool {
+        return lhs.intValue < rhs.intValue
+    }
+}
