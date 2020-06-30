@@ -9,50 +9,62 @@
 import SwiftUI
 
 struct DNAView: View {
-    let curveNumber = 5
-    var lineNumber: Int { curveNumber * 10 }
-    var finalAngle: CGFloat { CGFloat(curveNumber) * 360.0 }
+    var periodCount = 2
+    var lineNumberByDemiPeriod: Int = 5
+    var lineWidth: CGFloat = 1
+
+    private let segmentCount = 1000 // segment count to draw
+    private var lineNumber: Int { (lineNumberByDemiPeriod + 1) * 2 * periodCount }
+
+    private func periodScale(for length: CGFloat) -> CGFloat {
+        CGFloat(periodCount) * 2 * .pi / length
+    }
 
     var body: some View {
         GeometryReader(content: { geometry in
             Path { path in
-                let origin = CGPoint(x: geometry.size.width / 2, y: 0)
+                let centerAxe = geometry.size.width / 2
+                let origin = CGPoint(x: centerAxe, y: 0)
                 path.move(to: origin)
+                let segmentLength = geometry.size.height / CGFloat(segmentCount)
 
-                for angle in stride(from: 5.0, through: finalAngle, by: 5.0) {
-                    let y = origin.y + CGFloat(angle / finalAngle) * geometry.size.height
-                    let x = origin.x - CGFloat(sin(angle/180.0 * .pi)) * geometry.size.width * 0.5
+                for segmentNumber in 0..<segmentCount {
+                    let y = origin.y + CGFloat(segmentNumber) * segmentLength
+                    let x = origin.x + sin(y * periodScale(for:  geometry.size.height)) * centerAxe
                     path.addLine(to: CGPoint(x: x, y: y))
                 }
-            }.stroke()
+            }.stroke(lineWidth: lineWidth)
 
             Path { path in
-                let x = CGFloat(sin(100/180.0 * .pi)) * geometry.size.width * 0.5
-                let origin = CGPoint(x: x, y: 0)
+                let centerAxe = geometry.size.width / 2
+                let origin = CGPoint(x: centerAxe, y: 0)
                 path.move(to: origin)
+                let segmentLength = geometry.size.height / CGFloat(segmentCount)
 
-                for angle in stride(from: 5.0, through: finalAngle, by: 5.0) {
-                    let y = origin.y + CGFloat(angle / finalAngle) * geometry.size.height
-                    let x = origin.x - CGFloat(sin((angle + 130)/180.0 * .pi)) * geometry.size.width * 0.5
+                for segmentNumber in 0..<segmentCount {
+                    let y = origin.y + CGFloat(segmentNumber) * segmentLength
+                    let padding: CGFloat = .pi
+                    let x = centerAxe + sin(padding + y * periodScale(for:  geometry.size.height)) * centerAxe
                     path.addLine(to: CGPoint(x: x, y: y))
                 }
-            }.stroke()
+            }.stroke(lineWidth: lineWidth)
 
             ForEach(0..<lineNumber) { i in
                 Path { path in
                     let lineSpacing = geometry.size.height / CGFloat(lineNumber)
                     let y = CGFloat(i) * lineSpacing
 
-                    let firstAngle = 2 * finalAngle * y / geometry.size.height
+                    let centerAxe = geometry.size.width / 2
 
-                    let firstX = (geometry.size.width * 0.5) - CGFloat(sin(firstAngle/180.0 * .pi)) * geometry.size.width * 0.5
+                    let firstX = centerAxe + sin(y * periodScale(for:  geometry.size.height)) * centerAxe
 
                     path.move(to: CGPoint(x: firstX, y: y))
 
-                    let secondX = (geometry.size.width * 0.5) - CGFloat(sin((firstAngle + 130)/180.0 * .pi)) * geometry.size.width * 0.5
+                    let padding: CGFloat = .pi
+                    let secondX = centerAxe + sin(padding + y * periodScale(for:  geometry.size.height)) * centerAxe
 
                     path.addLine(to: CGPoint(x: secondX, y: y))
-                }.stroke(lineWidth: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
+                }.stroke(lineWidth: lineWidth)
             }
         })
     }
@@ -60,7 +72,12 @@ struct DNAView: View {
 
 struct DNAView_Previews: PreviewProvider {
     static var previews: some View {
-        DNAView()
-            .previewLayout(.fixed(width: 100, height: 500))
+        Group {
+            DNAView(periodCount: 2, lineNumberByDemiPeriod: 5, lineWidth: 1)
+                .previewLayout(.fixed(width: 100, height: 440))
+
+            DNAView(periodCount: 4, lineNumberByDemiPeriod: 3, lineWidth: 2)
+                .previewLayout(.fixed(width: 100, height: 440))
+        }
     }
 }
