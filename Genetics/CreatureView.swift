@@ -8,52 +8,115 @@
 
 import SwiftUI
 
-extension Creature {
+struct CreatureStatView: View {
+    let statName: String
+    let stats: AlleleCoupleDescription
 
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(statName)
+                .font(.headline)
+            HStack {
+                Text("A \(stats.first.valueDescription)")
+                Text("Dom. \(stats.first.dominance)")
+            }
+            HStack {
+                Text("B \(stats.second.valueDescription)")
+                Text("Dom. \(stats.second.dominance)")
+            }
+        }
+    }
 }
 
 struct CreatureView: View {
     let creature: Creature
 
+    private let stats: RawDNAReader?
+
+    init(creature: Creature) {
+        self.creature = creature
+        self.stats = try? RawDNAReader(dna: creature.dna)
+    }
+
+    var header: some View {
+        HStack(alignment: .firstTextBaseline) {
+            Text("\(creature.age) ans")
+                .font(.callout)
+                .foregroundColor(Color.gray)
+            Spacer()
+            Text(creature.isAlive ? "Vivant" : "Mort")
+            Circle()
+                .frame(width: 10, height: 10)
+                .foregroundColor(creature.isAlive ? .green : .red)
+        }
+    }
+
     var body: some View {
-        VStack {
-            HStack(alignment: .firstTextBaseline) {
-                Text(creature.name)
-                    .font(.title)
-                    .fontWeight(.bold)
-                Text("\(creature.age) ans")
-                    .font(.callout)
-                    .foregroundColor(Color.gray)
-                Spacer()
-                Text(creature.isAlive ? "Vivant" : "Mort")
-                Circle()
-                    .frame(width: 10, height: 10)
-                    .foregroundColor(creature.isAlive ? .green : .red)
-            }.padding()
-            Divider()
-            VStack(alignment: .leading) {
-                Text("Reproduction")
-                HStack {
-                    Text("Peut faire des enfants ?")
-                    Text(creature.canMakeBabies ? "OUI" : "NON")
-                        .padding(5)
-                        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                }
-                HStack {
-                    Text("Dernier rapport :")
-                    Text("Il y a 10 ans")
+        List {
+            Section(header: Text("Reproduction").bold()) {
+                VStack(alignment: .leading, spacing: 5) {
+                    HStack {
+                        Text("Peut faire des enfants ?")
+                        Text(creature.canMakeBabies ? "OUI" : "NON")
+                            .padding(5)
+                            .border(Color.black, width: 1)
+                    }
+                    HStack {
+                        Text("Dernier rapport :")
+                        Text("Il y a 10 ans")
+                    }
+                }.padding(.vertical, 5)
+            }
+
+            Section(header: Text("Détails").bold()) {
+                HStack(alignment: .top) {
+                    DNAView(periodCount: 3, lineNumberByDemiPeriod: 5, lineWidth: 1)
+                        .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .top)
+                    VStack(alignment: .leading, spacing: 10) {
+                        if let stats = stats {
+                            CreatureStatView(
+                                statName: "Attraction",
+                                stats: stats.attraction
+                            )
+                            CreatureStatView(
+                                statName: "Durée de vie",
+                                stats: stats.lifeDuration
+                            )
+                            CreatureStatView(
+                                statName: "Stabilité ADN",
+                                stats: stats.dnaStability
+                            )
+                            CreatureStatView(
+                                statName: "Détection",
+                                stats: stats.detection
+                            )
+                            CreatureStatView(
+                                statName: "Fécondation",
+                                stats: stats.fecondation
+                            )
+                            CreatureStatView(
+                                statName: "Résilience",
+                                stats: stats.resilience
+                            )
+
+                        } else {
+                            Text("L'ADN de cette créature est corrompue et ne peut être lu")
+                        }
+                    }
                 }
             }
-            Divider()
         }
-
+        .listStyle(InsetGroupedListStyle())
+        .navigationBarItems(trailing: header)
+        .navigationTitle(creature.name)
     }
 }
 
 struct CreatureView_Previews: PreviewProvider {
     static var previews: some View {
-        CreatureView(creature: Creature.fake)
-
+        NavigationView {
+            CreatureView(creature: Creature.fake)
+        }
     }
 }
 

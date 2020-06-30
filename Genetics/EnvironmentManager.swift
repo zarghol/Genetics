@@ -12,7 +12,7 @@ import Combine
 final class EnvironmentManager: ObservableObject {
     let environment: SimulationEnvironment
 
-    private let loopQueue = DispatchQueue(label: "com.genetics.enviromentLiving.queue", qos: .background)
+    private let loopQueue = DispatchQueue(label: "com.genetics.environmentLiving.queue", qos: .background)
 
     @Published var launched: Bool = false
     @Published var currentDate: AppDate

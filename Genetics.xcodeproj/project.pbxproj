@@ -31,6 +31,7 @@
 		18752A9124AA5DF90013D9B1 /* CreatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18752A9024AA5DF90013D9B1 /* CreatureView.swift */; };
 		18752A9324AA5E020013D9B1 /* CreatureRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18752A9224AA5E020013D9B1 /* CreatureRow.swift */; };
 		18752A9524AA681E0013D9B1 /* DNAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18752A9424AA681E0013D9B1 /* DNAView.swift */; };
+		18752A9724ABA1CE0013D9B1 /* RawDNAReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18752A9624ABA1CE0013D9B1 /* RawDNAReader.swift */; };
 		18B8398A2496BAE700797BC2 /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B839892496BAE700797BC2 /* EnvironmentManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		18752A9024AA5DF90013D9B1 /* CreatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureView.swift; sourceTree = "<group>"; };
 		18752A9224AA5E020013D9B1 /* CreatureRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatureRow.swift; sourceTree = "<group>"; };
 		18752A9424AA681E0013D9B1 /* DNAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DNAView.swift; sourceTree = "<group>"; };
+		18752A9624ABA1CE0013D9B1 /* RawDNAReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawDNAReader.swift; sourceTree = "<group>"; };
 		18B839892496BAE700797BC2 /* EnvironmentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 			children = (
 				18094C5A248D257E00CE298C /* Nucleotid.swift */,
 				18094C5C248D25C600CE298C /* DNA.swift */,
+				18752A9624ABA1CE0013D9B1 /* RawDNAReader.swift */,
 				18094C5E248D25E100CE298C /* Extensions.swift */,
 				18094C60248D261A00CE298C /* Characteristics.swift */,
 				18094C62248D263500CE298C /* MutationType.swift */,
@@ -279,6 +282,7 @@
 				18094C46248D254200CE298C /* AppDelegate.swift in Sources */,
 				18094C83248E385100CE298C /* PopulationView.swift in Sources */,
 				18094C65248D264900CE298C /* Creature.swift in Sources */,
+				18752A9724ABA1CE0013D9B1 /* RawDNAReader.swift in Sources */,
 				18094C81248E2A0000CE298C /* StartView.swift in Sources */,
 				18094C69248D267900CE298C /* PerceivedCreature.swift in Sources */,
 				18094C6F248D5E2600CE298C /* Names.swift in Sources */,
@@ -374,7 +378,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -428,7 +432,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

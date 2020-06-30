@@ -9,8 +9,8 @@
 import Foundation
 
 struct DNA {
-    private var firstStrand: [Nucleotid]
-    private var secondStrand: [Nucleotid]
+    private(set) var firstStrand: [Nucleotid]
+    private(set) var secondStrand: [Nucleotid]
 
     init(firstStrand: [Nucleotid], secondStrand: [Nucleotid]) {
         let usedFirstStrand: [Nucleotid]
@@ -37,7 +37,7 @@ struct DNA {
     mutating func applyMutation(_ mutation: (inout [Nucleotid]) -> Void) {
         let isFirst = Bool.random()
         if isFirst {
-            mutation(&secondStrand)
+            mutation(&firstStrand)
         } else {
             mutation(&secondStrand)
         }
@@ -65,8 +65,8 @@ struct DNA {
 
 extension DNA: CustomDebugStringConvertible {
     var debugDescription: String {
-        let a = [firstStrand.map { $0.rawValue }.joined(), secondStrand.map { $0.rawValue }.joined()].joined(separator: " | ")
-        return "🧬 " + a
+        let a = [firstStrand.map { $0.rawValue }.joined(), secondStrand.map { $0.rawValue }.joined()].joined(separator: "\n🧬 ")
+        return "\n🧬 " + a
     }
 }
 

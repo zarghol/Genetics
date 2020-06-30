@@ -14,7 +14,12 @@ struct PopulationView: View {
     
     var body: some View {
         List(self.environmentManager.creatures, id: \Creature.name) { creature in
-            CreatureRow(creature: creature)
+            NavigationLink(
+                destination: CreatureView(creature: creature),
+                label: {
+                    CreatureRow(creature: creature)
+                }
+            )
         }
         .navigationBarItems(
             trailing: Button(
