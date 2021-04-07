@@ -13,6 +13,7 @@ final class EnvironmentManager: ObservableObject {
     let environment: SimulationEnvironment
 
     private let loopQueue = DispatchQueue(label: "com.genetics.environmentLiving.queue", qos: .background)
+    private let accessQueue = DispatchQueue(label: "com.genetics.environmentLiving.access.queue", qos: .background)
 
     @Published var launched: Bool = false
     @Published var currentDate: AppDate
@@ -25,7 +26,8 @@ final class EnvironmentManager: ObservableObject {
     }
 
     func playPause() {
-        if launched {
+        print("😱 try to toggle !!!")
+        if accessQueue.sync(execute: { return self.launched }) {
             self.stop()
         } else {
             self.start()
@@ -33,33 +35,48 @@ final class EnvironmentManager: ObservableObject {
     }
 
     func start() {
-        guard !launched else { return }
+        let currentLaunched = accessQueue.sync(execute: { return self.launched })
+        guard !currentLaunched else { return }
 
-        launched = true
+        accessQueue.sync {
+            self.launched = true
+        }
 
-        loopQueue.async {
-            while self.launched {
-                self.loop()
+        Future<Void, Never> { promise in
+            self.loopQueue.async {
+                while true {
+                    let loopedLaunched = self.accessQueue.sync(execute: { return self.launched })
+                    if !loopedLaunched { break }
+                    self.loop()
+                }
             }
         }
+
+
     }
 
     func stop() {
-        launched = false
+        accessQueue.sync {
+            self.launched = false
+        }
     }
 
     func loop() {
         environment.live()
-        if self.checkNeedsToEnd() {
-            self.launched = false
-        }
+
         DispatchQueue.main.async {
             self.currentDate = self.environment.now
             self.creatures = self.environment.creatures
+
+            if self.checkNeedsToEnd() {
+                self.accessQueue.sync {
+                    self.launched = false
+                }
+            }
         }
     }
 
     private func checkNeedsToEnd() -> Bool {
-        return environment.creatures.isEmpty
+        return environment.creatures.isEmpty || environment.now.years > 30
     }
 }

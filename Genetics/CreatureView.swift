@@ -71,7 +71,7 @@ struct CreatureView: View {
             Section(header: Text("Détails").bold()) {
                 HStack(alignment: .top) {
                     DNAView(periodCount: 3, lineNumberByDemiPeriod: 5, lineWidth: 1)
-                        .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .top)
+                        .frame(width: 100, alignment: .top)
                     VStack(alignment: .leading, spacing: 10) {
                         if let stats = stats {
                             CreatureStatView(
@@ -106,9 +106,21 @@ struct CreatureView: View {
                 }
             }
         }
-        .listStyle(InsetGroupedListStyle())
-        .navigationBarItems(trailing: header)
+        .listStyle(listStyle)
+        toolbar(content: {
+            ToolbarItem(placement: ToolbarItemPlacement.primaryAction) {
+                header
+            }
+        })
         .navigationTitle(creature.name)
+    }
+
+    var listStyle: some ListStyle {
+        #if os(iOS)
+        return InsetGroupedListStyle()
+        #else
+        return InsetListStyle()
+        #endif
     }
 }
 

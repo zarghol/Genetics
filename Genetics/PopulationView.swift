@@ -21,17 +21,19 @@ struct PopulationView: View {
                 }
             )
         }
-        .navigationBarItems(
-            trailing: Button(
-                action: self.environmentManager.playPause,
-                label: {
-                    Image(systemName: environmentManager.launched ? "pause.circle.fill" : "play.circle.fill")
-                        .imageScale(.large)
-                }
-            )
-        )
-        .navigationBarTitle(environmentManager.currentDate.description)
-            .onAppear { if !self.launchAsStatic { self.environmentManager.start() } }
+        .toolbar {
+            ToolbarItem(placement: ToolbarItemPlacement.primaryAction) {
+                Button(
+                    action: self.environmentManager.playPause,
+                    label: {
+                        Image(systemName: environmentManager.launched ? "pause.circle.fill" : "play.circle.fill")
+                            .imageScale(.large)
+                    }
+                )
+            }
+        }
+        .navigationTitle(environmentManager.currentDate.description)
+//            .onAppear { if !self.launchAsStatic { self.environmentManager.start() } }
     }
 }
 
