@@ -17,10 +17,12 @@ struct MacGeneticsApp: App {
     var body: some Scene {
         WindowGroup {
             if showPopulationView {
-                PopulationView()
-                    .environmentObject(environment)
+                NavigationView {
+                    PopulationView()
+                }
+                .environmentObject(environment)
             } else {
-                StartView(showPopulation: $showPopulationView)
+                MacIntroView(showPopulation: $showPopulationView)
             }
         }
     }

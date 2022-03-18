@@ -12,7 +12,6 @@
 		1803F649261D2B4F00604A50 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1803F648261D2B4F00604A50 /* Preview Assets.xcassets */; };
 		1803F652261D2B6100604A50 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C49248D254200CE298C /* ContentView.swift */; };
 		1803F656261D2B6400604A50 /* EnvironmentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B839892496BAE700797BC2 /* EnvironmentManager.swift */; };
-		1803F65A261D2B6A00604A50 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C80248E2A0000CE298C /* StartView.swift */; };
 		1803F65B261D2B6A00604A50 /* PopulationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C82248E385100CE298C /* PopulationView.swift */; };
 		1803F65C261D2B6A00604A50 /* CreatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18752A9024AA5DF90013D9B1 /* CreatureView.swift */; };
 		1803F65D261D2B6A00604A50 /* DNAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18752A9424AA681E0013D9B1 /* DNAView.swift */; };
@@ -30,6 +29,8 @@
 		1803F66F261D2B8500604A50 /* DNA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C5C248D25C600CE298C /* DNA.swift */; };
 		1803F673261D2B9300604A50 /* Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C6E248D5E2600CE298C /* Names.swift */; };
 		1803F677261D2B9700604A50 /* Names.json in Resources */ = {isa = PBXBuildFile; fileRef = 18094C6C248D5D6D00CE298C /* Names.json */; };
+		1803F680261D31AA00604A50 /* MacIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803F67B261D31A700604A50 /* MacIntroView.swift */; };
+		1803F690261D3DE300604A50 /* LoopPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B3BC7224AEAD9600636732 /* LoopPublisher.swift */; };
 		18094C46248D254200CE298C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C45248D254200CE298C /* AppDelegate.swift */; };
 		18094C48248D254200CE298C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C47248D254200CE298C /* SceneDelegate.swift */; };
 		18094C4A248D254200CE298C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18094C49248D254200CE298C /* ContentView.swift */; };
@@ -76,6 +77,7 @@
 		1803F648261D2B4F00604A50 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1803F64A261D2B4F00604A50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1803F64B261D2B4F00604A50 /* MacGenetics.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacGenetics.entitlements; sourceTree = "<group>"; };
+		1803F67B261D31A700604A50 /* MacIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacIntroView.swift; sourceTree = "<group>"; };
 		18094C42248D254200CE298C /* Genetics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Genetics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18094C45248D254200CE298C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18094C47248D254200CE298C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				18752A9424AA681E0013D9B1 /* DNAView.swift */,
 				18752A9224AA5E020013D9B1 /* CreatureRow.swift */,
 				18094C80248E2A0000CE298C /* StartView.swift */,
+				1803F67B261D31A700604A50 /* MacIntroView.swift */,
 				18094C4B248D254400CE298C /* Assets.xcassets */,
 				18094C50248D254400CE298C /* LaunchScreen.storyboard */,
 				18094C53248D254400CE298C /* Info.plist */,
@@ -369,9 +372,9 @@
 				1803F66E261D2B8500604A50 /* PerceivedCreature.swift in Sources */,
 				1803F66C261D2B8500604A50 /* SimulationEnvironment.swift in Sources */,
 				1803F65C261D2B6A00604A50 /* CreatureView.swift in Sources */,
+				1803F690261D3DE300604A50 /* LoopPublisher.swift in Sources */,
 				1803F66A261D2B8500604A50 /* AppDate.swift in Sources */,
 				1803F669261D2B8500604A50 /* Perception.swift in Sources */,
-				1803F65A261D2B6A00604A50 /* StartView.swift in Sources */,
 				1803F665261D2B8500604A50 /* Nucleotid.swift in Sources */,
 				1803F642261D2B4D00604A50 /* MacGeneticsApp.swift in Sources */,
 				1803F65B261D2B6A00604A50 /* PopulationView.swift in Sources */,
@@ -381,6 +384,7 @@
 				1803F65D261D2B6A00604A50 /* DNAView.swift in Sources */,
 				1803F66B261D2B8500604A50 /* Extensions.swift in Sources */,
 				1803F66F261D2B8500604A50 /* DNA.swift in Sources */,
+				1803F680261D31AA00604A50 /* MacIntroView.swift in Sources */,
 				1803F668261D2B8500604A50 /* Creature.swift in Sources */,
 				1803F66D261D2B8500604A50 /* Characteristics.swift in Sources */,
 				1803F656261D2B6400604A50 /* EnvironmentManager.swift in Sources */,

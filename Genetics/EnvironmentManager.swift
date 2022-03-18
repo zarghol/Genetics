@@ -9,74 +9,52 @@
 import Foundation
 import Combine
 
+extension EnvironmentManager {
+    struct SimulationIterationResult {
+        let currentDate: AppDate
+        let creatures: [Creature]
+    }
+}
+
 final class EnvironmentManager: ObservableObject {
-    let environment: SimulationEnvironment
-
     private let loopQueue = DispatchQueue(label: "com.genetics.environmentLiving.queue", qos: .background)
-    private let accessQueue = DispatchQueue(label: "com.genetics.environmentLiving.access.queue", qos: .background)
 
-    @Published var launched: Bool = false
-    @Published var currentDate: AppDate
-    @Published var creatures: [Creature]
+    let livingPublisher: ThrowableLoopPublisher<SimulationIterationResult>
+    @Published var result: SimulationIterationResult
+
+    var environmentCancellable: AnyCancellable?
 
     init(environment: SimulationEnvironment) {
-        self.environment = environment
-        self.currentDate = self.environment.now
-        self.creatures = self.environment.creatures
+        result = SimulationIterationResult(
+            currentDate: environment.now,
+            creatures: environment.creatures
+        )
+        
+        self.livingPublisher = ThrowableLoopPublisher {
+            environment.live()
+
+            return SimulationIterationResult(
+                currentDate: environment.now,
+                creatures: environment.creatures
+            )
+        }
+
+        environmentCancellable = self.livingPublisher
+            .subscribe(on: loopQueue)
+            .receive(on: DispatchQueue.main)
+            .print()
+            .sink(receiveCompletion: { _ in }) { result in
+                self.result = result
+            }
     }
 
     func playPause() {
         print("😱 try to toggle !!!")
-        if accessQueue.sync(execute: { return self.launched }) {
-            self.stop()
+        self.objectWillChange.send()
+        if livingPublisher.isRunning {
+            livingPublisher.stop()
         } else {
-            self.start()
+            livingPublisher.start()
         }
-    }
-
-    func start() {
-        let currentLaunched = accessQueue.sync(execute: { return self.launched })
-        guard !currentLaunched else { return }
-
-        accessQueue.sync {
-            self.launched = true
-        }
-
-        Future<Void, Never> { promise in
-            self.loopQueue.async {
-                while true {
-                    let loopedLaunched = self.accessQueue.sync(execute: { return self.launched })
-                    if !loopedLaunched { break }
-                    self.loop()
-                }
-            }
-        }
-
-
-    }
-
-    func stop() {
-        accessQueue.sync {
-            self.launched = false
-        }
-    }
-
-    func loop() {
-        environment.live()
-
-        DispatchQueue.main.async {
-            self.currentDate = self.environment.now
-            self.creatures = self.environment.creatures
-
-            if self.checkNeedsToEnd() {
-                self.accessQueue.sync {
-                    self.launched = false
-                }
-            }
-        }
-    }
-
-    private func checkNeedsToEnd() -> Bool {
-        return environment.creatures.isEmpty || environment.now.years > 30
     }
 }

@@ -43,8 +43,11 @@ struct CreatureView: View {
             Text("\(creature.age) ans")
                 .font(.callout)
                 .foregroundColor(Color.gray)
+
             Spacer()
+
             Text(creature.isAlive ? "Vivant" : "Mort")
+
             Circle()
                 .frame(width: 10, height: 10)
                 .foregroundColor(creature.isAlive ? .green : .red)
@@ -72,6 +75,7 @@ struct CreatureView: View {
                 HStack(alignment: .top) {
                     DNAView(periodCount: 3, lineNumberByDemiPeriod: 5, lineWidth: 1)
                         .frame(width: 100, alignment: .top)
+
                     VStack(alignment: .leading, spacing: 10) {
                         if let stats = stats {
                             CreatureStatView(
@@ -98,7 +102,6 @@ struct CreatureView: View {
                                 statName: "Résilience",
                                 stats: stats.resilience
                             )
-
                         } else {
                             Text("L'ADN de cette créature est corrompue et ne peut être lu")
                         }
@@ -107,11 +110,11 @@ struct CreatureView: View {
             }
         }
         .listStyle(listStyle)
-        toolbar(content: {
-            ToolbarItem(placement: ToolbarItemPlacement.primaryAction) {
+        .toolbar {
+            ToolbarItem {
                 header
             }
-        })
+        }
         .navigationTitle(creature.name)
     }
 
